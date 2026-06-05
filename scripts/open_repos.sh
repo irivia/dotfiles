@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS="$HOME/programming/"
+PROJECTS="$HOME/programming/repos/"
 
 selected=$(find "$PROJECTS" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf --bind 'enter:accept-or-print-query')
 
