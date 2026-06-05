@@ -32,6 +32,7 @@ alias desk="cd '$HOME/Desktop'"
 alias down="cd '$HOME/Downloads'"
 alias f="fg"
 alias cd="z"
+alias newc="~/.config/scripts/new_c_project.py"
 
 # Functions
 function mkcd {
