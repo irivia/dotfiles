@@ -2,6 +2,7 @@
 
 import sys
 import os
+import subprocess
 
 def generate_makefile(project_name):
     makefile=\
@@ -72,5 +73,13 @@ def main():
         f.write(generate_makefile(project_name))
     with open(f"{project_dir}/src/main.c", "a") as f:
         f.write(generate_main_c())
+    try:
+        subprocess.call('git init', shell=True, cwd=project_dir)
+        subprocess.call('git branch -M main', shell=True, cwd=project_dir)
+    except:
+        print("Error! Couldn't initialize git repo")
+        exit(1)
+    with open(f"{project_dir}/.gitignore", "w") as f:
+        f.write("build/\n")
 
 main()
