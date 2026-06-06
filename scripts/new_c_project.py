@@ -4,7 +4,8 @@ import sys
 import os
 
 def generate_makefile(project_name):
-    makefile=f"""CC=gcc
+    makefile=\
+f"""CC=gcc
 SRC=$(wildcard ./src/*.c)
 HEADERS=$(wildcard ./src/*.h)
 CFLAGS=-O3 -Werror -Wall -Wextra
@@ -33,26 +34,40 @@ $(BUILD):
 
 .PHONY: clean
 clean:
-\trm -rf $(BUILD)"""
+\trm -rf $(BUILD)
+"""
     return makefile
 
 def generate_main_c():
-    main_c = """int main(void)
+    main_c =\
+"""#include <stdio.h>
+
+int main(void)
 {
-}"""
+    printf("Hello, world!\\n");
+
+    return 0;
+}
+"""
     return main_c
 
 def main():
-    if len(sys.argv) < 2:
+    projects_path_var = "PROJECTS_PATH"
+    try:
+        project_name = sys.argv[1]
+    except: 
         print("Error: must provide project name")
         exit(1)
-    project_name = sys.argv[1]
-    project_dir = f"/mnt/d/programming/repos/{project_name}"
-    if os.path.isdir(project_dir):
+    try:
+        project_dir = f"{os.environ[projects_path_var]}/{project_name}"
+    except:
+        print(f"Error! '{projects_path_var}' shell variable must be defined")
+        exit(1) 
+    try:
+        os.makedirs(f"{project_dir}/src")
+    except:
         print("Error: Project with that name already exists")
         exit(1)
-    os.mkdir(project_dir)
-    os.mkdir(f"{project_dir}/src")
     with open(f"{project_dir}/Makefile", "a") as f:
         f.write(generate_makefile(project_name))
     with open(f"{project_dir}/src/main.c", "a") as f:
