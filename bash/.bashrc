@@ -17,6 +17,7 @@ bind -x '"\C-e":"~/.config/scripts/open_session.sh"'
 export EDITOR=nvim
 export GTK_USE_PORTAL=1 
 export MANPAGER='nvim +Man!'
+export PROJECTS_PATH='/mnt/d/programming/repos'
 # PS1="[$SHLVL $USER@$HOSTNAME \\w]$\033[37m "
 
 # Aliases
