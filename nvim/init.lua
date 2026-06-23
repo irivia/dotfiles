@@ -27,15 +27,6 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function()
-        vim.diagnostic.config({
-            underline = false,
-            virtual_text = false,
-        })
-    end,
-})
-
 vim.cmd("colorscheme tokyonight")
 
 require('neoterm').setup({

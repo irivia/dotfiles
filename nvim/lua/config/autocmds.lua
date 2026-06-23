@@ -16,3 +16,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function()
+        vim.diagnostic.config({
+            underline = false,
+            virtual_text = false,
+        })
+    end,
+})
