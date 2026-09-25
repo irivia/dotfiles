@@ -28,10 +28,6 @@ alias vi="/usr/bin/vim"
 alias lg="lazygit"
 alias lh="ls -AX"
 alias ff="clear && fastfetch"
-alias home="cd '$HOME'"
-alias desk="cd '$HOME/Desktop'"
-alias down="cd '$HOME/Downloads'"
-alias f="fg"
 alias cd="z"
 alias newc="~/.config/scripts/new_c_project.py"
 
@@ -42,6 +38,10 @@ function mkcd {
 
 function kanata_rel {
     systemctl --user restart kanata.service
+}
+
+function plasma_rel {
+    systemctl restart --user plasma-plasmashell
 }
 
 function prog {
