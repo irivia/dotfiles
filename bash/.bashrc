@@ -13,7 +13,10 @@ bind -x '"\C-a":"~/.config/scripts/open_repos.sh"'
 bind -x '"\C-t":"~/.config/scripts/open_repos.sh"'
 bind -x '"\C-e":"~/.config/scripts/open_session.sh"'
 
+source ~/.config/fastfetch/.env
+
 # Variables
+export FASTFETCH_PIC
 export EDITOR=nvim
 export GTK_USE_PORTAL=1 
 export MANPAGER='nvim +Man!'
