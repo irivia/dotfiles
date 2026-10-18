@@ -1,4 +1,7 @@
 kitty/kitty.conf.bak
 kitty/q
 kanata/kanata.kbd.bak
+VSCodium/*
+!VSCodium/User/keybindings.json
+!VSCodium/User/settings.json
 .env
