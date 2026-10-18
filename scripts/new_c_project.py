@@ -16,24 +16,25 @@ BUILD=build
 EXE=$(BUILD)/{project_name}
 DEBUG=$(BUILD)/{project_name}-deb
 
-all: $(BUILD) $(EXE) $(DEBUG)
+.PHONY: clean run debug
 
-$(EXE): $(SRC) $(HEADERS)
+all: $(EXE) $(DEBUG)
+
+$(EXE): $(BUILD) $(SRC) $(HEADERS)
 \t$(CC) $(CFLAGS) -o $(EXE) $(SRC) $(LFLAGS)
 
-$(DEBUG): $(SRC) $(HEADERS)
+$(DEBUG): $(BUILD) $(SRC) $(HEADERS)
 \t$(CC) $(DFLAGS) -o $(DEBUG) $(SRC) $(LFLAGS)
 
 run: $(EXE)
 \t./$(EXE)
 
 debug: $(DEBUG)
-\t./$(DEBUG)
+\tgdb ./$(DEBUG)
 
 $(BUILD):
 \tmkdir -p $(BUILD)
 
-.PHONY: clean
 clean:
 \trm -rf $(BUILD)
 """
