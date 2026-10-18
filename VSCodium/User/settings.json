@@ -86,6 +86,6 @@
     /* Miscellaneous */
     "codesnap.showWindowTitle": true,
     "window.menuBarVisibility": "compact",
-    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.colorTheme": "Catppuccin Mocha",
     /* ------------------------- */
 }
