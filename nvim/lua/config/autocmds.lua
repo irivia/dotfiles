@@ -14,11 +14,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if client and client.server_capabilities.semanticTokensProvider then
             client.server_capabilities.semanticTokensProvider = nil
         end
-    end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function()
         vim.diagnostic.config({
             underline = false,
             virtual_text = false,
