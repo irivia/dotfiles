@@ -36,3 +36,5 @@ require('neoterm').setup({
 	width = 1,
 	height = 1,
 })
+
+vim.hl.priorities.semantic_tokens = 80
