@@ -1,0 +1,32 @@
+CC=gcc
+SRC=$(wildcard ./src/*.c)
+HEADERS=$(wildcard ./src/*.h)
+BUILD=build
+DEPS=$(BUILD) $(SRC) $(HEADERS)
+CFLAGS=-O3 -Werror -Wall -Wextra
+DFLAGS=-O0 -g -Wall -Wextra
+LFLAGS=
+EXE=$(BUILD)/PROJECT_NAME
+DEBUG=$(BUILD)/PROJECT_NAME-deb
+
+.PHONY: clean run debug
+
+all: $(EXE) $(DEBUG)
+
+$(EXE): $(DEPS)
+	$(CC) $(CFLAGS) -o $(EXE) $(SRC) $(LFLAGS)
+
+$(DEBUG): $(DEPS)
+	$(CC) $(DFLAGS) -o $(DEBUG) $(SRC) $(LFLAGS)
+
+$(BUILD):
+	mkdir -p $(BUILD)
+
+run: $(EXE)
+	./$(EXE)
+
+debug: $(DEBUG)
+	gdb ./$(DEBUG)
+
+clean:
+	rm -rf $(BUILD)

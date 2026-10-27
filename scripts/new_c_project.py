@@ -5,52 +5,17 @@ import os
 import subprocess
 
 def generate_makefile(project_name):
-    makefile=\
-f"""CC=gcc
-SRC=$(wildcard ./src/*.c)
-HEADERS=$(wildcard ./src/*.h)
-CFLAGS=-O3 -Werror -Wall -Wextra
-DFLAGS=-O0 -g -Wall -Wextra
-LFLAGS=
-BUILD=build
-EXE=$(BUILD)/{project_name}
-DEBUG=$(BUILD)/{project_name}-deb
-
-.PHONY: clean run debug
-
-all: $(EXE) $(DEBUG)
-
-$(EXE): $(BUILD) $(SRC) $(HEADERS)
-\t$(CC) $(CFLAGS) -o $(EXE) $(SRC) $(LFLAGS)
-
-$(DEBUG): $(BUILD) $(SRC) $(HEADERS)
-\t$(CC) $(DFLAGS) -o $(DEBUG) $(SRC) $(LFLAGS)
-
-run: $(EXE)
-\t./$(EXE)
-
-debug: $(DEBUG)
-\tgdb ./$(DEBUG)
-
-$(BUILD):
-\tmkdir -p $(BUILD)
-
-clean:
-\trm -rf $(BUILD)
-"""
+    makefile=''
+    place_holder ='PROJECT_NAME'
+    with open("./makefile_preset", "r") as f:
+        makefile = f.read()
+    makefile = makefile.replace(place_holder, project_name)
     return makefile
 
 def generate_main_c():
-    main_c =\
-"""#include <stdio.h>
-
-int main(void)
-{
-    printf("Hello, world!\\n");
-
-    return 0;
-}
-"""
+    main_c=''
+    with open("./preset.c", "r") as f:
+        main_c = f.read()
     return main_c
 
 def main():
