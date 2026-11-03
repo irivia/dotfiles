@@ -6,3 +6,4 @@ VSCodium/*
 !VSCodium/User/settings.json
 .env
 .nvim.exp
+nvim-*
